@@ -10,15 +10,17 @@ import { FormGroup } from '@angular/forms';
       [formGroup]="group">
       <label>{{ config.label }}</label>
       <input
+        id="{{config.name}}"
         type="text"
         [attr.placeholder]="config.placeholder"
         [formControlName]="config.name" />
-        <div [hidden]="group.controls.name.valid || group.controls.name.pristine" class="alert alert-danger">
-                <span *ngIf="!group.controls.name.valid">{{ config.validationmsg }}</span>
-        </div>
+        <div *ngIf="!(group.controls[config.name].valid || group.controls[config.name].pristine) as variable" class="alert alert-danger" >
+            <span>{{config.validationmsg}}</span>
+        </div>       
     </div>`
 })
 export class FormInputComponent {
     config;
+    ctrlid;
     group: FormGroup;
 }
