@@ -6,6 +6,7 @@ import { DynamicFormComponent } from './dynamic-form.component';
 import { FormButtonComponent } from './form-fields/form-button.component';
 import { FormInputComponent } from './form-fields/form-input.component';
 import { FormSelectComponent } from './form-fields/form-select.component';
+import { WidgetTestComponent } from './widgets/widgettest.component'
 import { DynamicFieldDirective } from './dynamic-field.directive';
 
 
@@ -20,12 +21,14 @@ import { DynamicFieldDirective } from './dynamic-field.directive';
         DynamicFormComponent,
         FormButtonComponent,
         FormInputComponent,
-        FormSelectComponent
+        FormSelectComponent,
+        WidgetTestComponent
     ],
     entryComponents: [
         FormButtonComponent,
         FormInputComponent,
-        FormSelectComponent
+        FormSelectComponent,
+        WidgetTestComponent
     ],
     exports: [
         DynamicFormComponent

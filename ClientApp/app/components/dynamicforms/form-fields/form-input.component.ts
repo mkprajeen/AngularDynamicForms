@@ -21,6 +21,5 @@ import { FormGroup } from '@angular/forms';
 })
 export class FormInputComponent {
     config;
-    ctrlid;
     group: FormGroup;
 }

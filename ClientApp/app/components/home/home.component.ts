@@ -16,7 +16,7 @@ export class HomeComponent {
             placeholder: 'Enter your name',
             madatory: true,
             minlenth: 6,
-            validationmsg:'first name is mandatory'
+            validationmsg: 'first name is mandatory'
 
         },
         {
@@ -40,6 +40,13 @@ export class HomeComponent {
             label: 'Submit',
             name: 'submit',
             type: 'button'
+        },
+
+        {
+            type: 'widgettest',
+            iswidget: true,
+                      
+
         }
     ];
 }
