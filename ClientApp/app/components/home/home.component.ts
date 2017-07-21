@@ -48,9 +48,14 @@ export class HomeComponent {
         },
         {
             mr_form_field_id: 55,
-            data_type: 'string',
+            data_type: 'widget',
             field_type: 'widgettest',
             widget_type: 'widgettest',
+            mr_form_field_data : {
+                name: 'prajeen',
+                url: 'wwww.test.com',
+                description: 'Desc'
+            },
         }
 
     ];

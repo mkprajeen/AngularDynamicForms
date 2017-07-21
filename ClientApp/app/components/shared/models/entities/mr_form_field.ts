@@ -32,8 +32,11 @@
    // public label_font_weight?: string;
   //  public isactive?: boolean;
     public display_label?: string;
+
     public validationmsg?: string;
     public minlenth?: number;
+    public mr_form_field_data?: any;
+
     //public mr_form_field_data: ICollection<mr_form_field_data>;
     //public mr_form_field_value_option: ICollection<mr_form_field_value_option>;
     //public mr_template_section: mr_template_section;

@@ -2,21 +2,21 @@
     <h1>widget</h1>
     <div class="form-group">
         <label>
-            <span>Name</span>
+            <span>Name: {{config.mr_form_field_data.name}}</span>
         </label>
-        <input type="text" ng-model="referer.name"   class="form-control" placeholder="Referer Name">
-        <div [hidden]="referer.name.valid || referer.name.pristine" class="alert alert-danger">
-            <span *ngIf="!referer.name.valid">Name is required!</span>
-        </div>
+        <input type="text" [ngModel)]="config.mr_form_field_data.name"   class="form-control" placeholder="Referer Name">
+        <!--<div [hidden]="config.mr_form_field_data.name.valid || config.mr_form_field_data.name.pristine" class="alert alert-danger">
+            <span *ngIf="!config.mr_form_field_data.name.valid">Name is required!</span>
+        </div>-->
     </div>
     <div class="form-group">
         <label>
             <span>Url </span>
         </label>
-        <input type="text" class="form-control" placeholder="url">
-        <div [hidden]="referer.url.valid || referer.url.pristine" class="alert alert-danger">
+        <input type="text" class="form-control" ng-model="config.data_type" placeholder="url">
+        <!--<div [hidden]="referer.url.valid || referer.url.pristine" class="alert alert-danger">
             <span *ngIf="!referer.url.valid">Url is required!</span>
-        </div>
+        </div>-->
 
     </div>
     <div class="form-group">
@@ -24,8 +24,8 @@
             <span>Description</span>
         </label>
         <textarea class="form-control" placeholder="Description"></textarea>
-        <div [hidden]="referer.description.valid || referer.description.pristine" class="alert alert-danger">
+        <!--<div [hidden]="referer.description.valid || referer.description.pristine" class="alert alert-danger">
             <span *ngIf="!referer.description.valid">Description is required!</span>
-        </div>
+        </div>-->
     </div>
     </div>

@@ -1,5 +1,6 @@
 ﻿import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { mr_form_field} from '../shared/models/entities/mr_form_field'
 
 @Component({
     selector: 'dynamic-form',
@@ -20,7 +21,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class DynamicFormComponent implements OnInit {
     @Input()
-    config: any[] = [];
+    config: mr_form_field[] = [];
 
     @Output()
     submitted: EventEmitter<any> = new EventEmitter<any>();
@@ -38,10 +39,15 @@ export class DynamicFormComponent implements OnInit {
         this.config.forEach(control =>
         {
             if (control.required_indicator) {
-                group.addControl(control.mr_form_field_id, this.fb.control('', [Validators.required, Validators.minLength(control.minlenth)]))
+                group.addControl(control.mr_form_field_id.toString(), this.fb.control('', [Validators.required, Validators.minLength(control.minlenth)]))
             }
-            else {
-                group.addControl(control.mr_form_field_id, this.fb.control(''))
+            else if (control.data_type=='widget')
+            {
+                group.addControl(control.mr_form_field_id.toString(), this.fb.control('')) 
+            }
+            else
+            {
+                group.addControl(control.mr_form_field_id.toString(), this.fb.control(''))
             }
                 
         });

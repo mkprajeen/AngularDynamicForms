@@ -1,4 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+
 
 import { Referer } from '../../shared/models/referer.model';
 
@@ -7,16 +9,21 @@ import { Referer } from '../../shared/models/referer.model';
     templateUrl: './widgettest.component.html'
 })
 export class WidgetTestComponent {
-
-    config: Referer;
+    config;
+    referer: Referer;
 
 
     constructor() {
-        this.config = {
-            name: 'prajeen',
-            url: 'wwww.test.com',
-            description: 'Desc'
-        };
+        //this.referer = {
+        //    name: 'prajeen',
+        //    url: 'wwww.test.com',
+        //    description: 'Desc'
+        //};
+        //this.config.mr_form_field_data = {
+        //    name: 'prajeen',
+        //    url: 'wwww.test.com',
+        //    description: 'Desc'
+        //};
     }
     ngOnInit() {
 
