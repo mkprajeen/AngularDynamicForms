@@ -6,13 +6,13 @@ import { Referer } from '../../shared/models/referer.model';
     selector: 'widgettest',
     templateUrl: './widgettest.component.html'
 })
-export class WidgetTestComponent implements OnInit {
+export class WidgetTestComponent {
 
-    public referer: Referer;
+    config: Referer;
 
 
     constructor() {
-        this.referer = {
+        this.config = {
             name: 'prajeen',
             url: 'wwww.test.com',
             description: 'Desc'

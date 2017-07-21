@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {mr_form_field} from '../shared/models/entities/mr_form_field'
 
 @Component({
     selector: 'home',
@@ -8,45 +9,50 @@ export class HomeComponent {
     formSubmitted(value) {
         console.log(value);
     }
-    config = [
+    config: mr_form_field[] =
+    [
         {
-            type: 'input',
-            label: 'first name',
-            name: 'fname',
-            placeholder: 'Enter your name',
-            madatory: true,
+            mr_form_field_id: 11,
+            data_type: 'string',
+            field_type: 'input',
+            display_label: 'Enter your fisrt name',  
+            label: 'Lirst name',
+            required_indicator:true,
+            validationmsg: 'First name is mandatory',
             minlenth: 6,
-            validationmsg: 'first name is mandatory'
-
         },
         {
-            type: 'input',
-            label: 'last name',
-            name: 'lname',
-            placeholder: 'Enter your name',
-            madatory: true,
-            minlenth: 10,
-            validationmsg: 'last name is mandatory'
-
+            mr_form_field_id: 22,
+            data_type: 'string',
+            field_type: 'input',
+            display_label: 'Enter your last name',
+            label: 'Last name',
+            required_indicator: true,
+            validationmsg: 'Last name is mandatory',
+            minlenth: 6,
         },
         {
-            type: 'select',
+            mr_form_field_id: 33,
+            data_type: 'string',
+            field_type: 'select',
+            display_label: 'select your favourite food',
             label: 'Favourite food',
-            name: 'food',
-            options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
-            placeholder: 'Select an option'
+            value_options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+            validationmsg: 'favourite food is mandatory',
         },
         {
+            mr_form_field_id:44,
+            data_type: 'string',
+            field_type: 'button',
             label: 'Submit',
-            name: 'submit',
-            type: 'button'
         },
-
         {
-            type: 'widgettest',
-            iswidget: true,
-                      
-
+            mr_form_field_id: 55,
+            data_type: 'string',
+            field_type: 'widgettest',
+            widget_type: 'widgettest',
         }
+
     ];
+
 }

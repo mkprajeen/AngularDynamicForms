@@ -37,11 +37,11 @@ export class DynamicFormComponent implements OnInit {
         const group = this.fb.group({});
         this.config.forEach(control =>
         {
-            if (control.madatory) {
-                group.addControl(control.name, this.fb.control('', [Validators.required, Validators.minLength(control.minlenth)]))
+            if (control.required_indicator) {
+                group.addControl(control.mr_form_field_id, this.fb.control('', [Validators.required, Validators.minLength(control.minlenth)]))
             }
             else {
-                group.addControl(control.name, this.fb.control(''))
+                group.addControl(control.mr_form_field_id, this.fb.control(''))
             }
                 
         });
