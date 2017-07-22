@@ -1,31 +1,54 @@
-﻿<div >
-    <h1>widget</h1>
-    <div class="form-group">
-        <label>
-            <span>Name: {{config.mr_form_field_data.name}}</span>
-        </label>
-        <input type="text" [ngModel)]="config.mr_form_field_data.name"   class="form-control" placeholder="Referer Name">
-        <!--<div [hidden]="config.mr_form_field_data.name.valid || config.mr_form_field_data.name.pristine" class="alert alert-danger">
-            <span *ngIf="!config.mr_form_field_data.name.valid">Name is required!</span>
-        </div>-->
-    </div>
-    <div class="form-group">
-        <label>
-            <span>Url </span>
-        </label>
-        <input type="text" class="form-control" ng-model="config.data_type" placeholder="url">
-        <!--<div [hidden]="referer.url.valid || referer.url.pristine" class="alert alert-danger">
-            <span *ngIf="!referer.url.valid">Url is required!</span>
-        </div>-->
+﻿<div [formGroup]="group">
+    <div class="container" [formGroupName]="config.mr_form_field_id">
+        <h1>Widget</h1>
+        {{group.value | json }}
+        {{group.controls[config.mr_form_field_id].value}}
 
+        <!--<form novalidate [formGroup]="group" >-->
+        <div class="form-group">
+            <label>
+                <span>Name</span>
+            </label>
+            <input type="text" formControlName="name" class="form-control" placeholder="Referer Name">
+            <!--<div [hidden]="group.controls[config.mr_form_field_id].value.valid || group.controls[config.mr_form_field_id].value.pristine" class="alert alert-danger">
+                <span *ngIf="!group.controls[config.mr_form_field_id].value.valid">Name is required!</span>
+            </div>-->
+            <!--<div *ngIf="!(group.controls[config.mr_form_field_id].value.valid || group.controls[config.mr_form_field_id].value.pristine) as variable" class="alert alert-danger">
+                <span>Name is required!</span>
+            </div>--> 
+        </div>
+        <div class="form-group">
+            <label>
+                <span>Sex</span>
+            </label>            
+            <select formControlName="sex" class="form-control">
+                <option value="">Select sex</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>
+                <span>Url </span>
+            </label>
+            <input type="text" formControlName="url" class="form-control" placeholder="url">
+            <!--<div [hidden]="referer.controls.url.valid || referer.controls.url.pristine" class="alert alert-danger">
+                <span *ngIf="!referer.controls.url.valid">Url is required!</span>
+            </div>-->
+
+        </div>
+        <div class="form-group">
+            <label>
+                <span>Description</span>
+            </label>
+            <textarea formControlName="description" class="form-control" placeholder="Description"></textarea>
+            <!--<div [hidden]="referer.controls.description.valid || referer.controls.description.pristine" class="alert alert-danger">
+                <span *ngIf="!referer.controls.description.valid">Description is required!</span>
+            </div>-->
+        </div>
+        
+        <!--<button type="submit" class="btn btn-success" [disabled]="!referer.valid">Add</button>-->
+        <!--</form>-->
     </div>
-    <div class="form-group">
-        <label>
-            <span>Description</span>
-        </label>
-        <textarea class="form-control" placeholder="Description"></textarea>
-        <!--<div [hidden]="referer.description.valid || referer.description.pristine" class="alert alert-danger">
-            <span *ngIf="!referer.description.valid">Description is required!</span>
-        </div>-->
-    </div>
-    </div>
+</div>

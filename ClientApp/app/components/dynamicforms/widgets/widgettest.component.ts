@@ -1,17 +1,23 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+﻿import { Component } from '@angular/core';
+import { FormGroup, FormControl  } from '@angular/forms';
+
 
 
 import { Referer } from '../../shared/models/referer.model';
 
 @Component({
-    selector: 'widgettest',
+    selector: 'widget-test',
     templateUrl: './widgettest.component.html'
 })
 export class WidgetTestComponent {
     config;
-    referer: Referer;
-
+    group: FormGroup;
+    //referer: Referer;
+    //Referer= new FormGroup({
+    //    name: new FormControl(),
+    //    url: new FormControl(),
+    //    description: new FormControl()
+    //});
 
     constructor() {
         //this.referer = {

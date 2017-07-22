@@ -43,7 +43,8 @@ export class DynamicFormComponent implements OnInit {
             }
             else if (control.data_type=='widget')
             {
-                group.addControl(control.mr_form_field_id.toString(), this.fb.control('')) 
+                var widgetctrl = this.fb.group(control.mr_form_field_data);
+                group.addControl(control.mr_form_field_id.toString(), widgetctrl)
             }
             else
             {

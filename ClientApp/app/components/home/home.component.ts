@@ -51,10 +51,11 @@ export class HomeComponent {
             data_type: 'widget',
             field_type: 'widgettest',
             widget_type: 'widgettest',
-            mr_form_field_data : {
+            mr_form_field_data :  {
                 name: 'prajeen',
                 url: 'wwww.test.com',
-                description: 'Desc'
+                description: 'Desc',
+                sex:''
             },
         }
 
