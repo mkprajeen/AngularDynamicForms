@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { Referer } from '../../shared/models/referer.model';
+import { Referer } from '../../../models/referer.model';
 
 @Component({
     selector: 'main-form',

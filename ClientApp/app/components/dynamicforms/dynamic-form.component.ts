@@ -1,6 +1,6 @@
 ﻿import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { mr_form_field} from '../shared/models/entities/mr_form_field'
+import { mr_form_field } from '../../models/entities/mr_form_field'
 
 @Component({
     selector: 'dynamic-form',

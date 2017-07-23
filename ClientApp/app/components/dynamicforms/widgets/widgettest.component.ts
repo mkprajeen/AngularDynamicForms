@@ -3,7 +3,7 @@ import { FormGroup, FormControl  } from '@angular/forms';
 
 
 
-import { Referer } from '../../shared/models/referer.model';
+import { Referer } from '../../../models/referer.model';
 
 @Component({
     selector: 'widget-test',

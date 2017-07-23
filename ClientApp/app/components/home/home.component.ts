@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {mr_form_field} from '../shared/models/entities/mr_form_field'
+import { mr_form_field } from '../../models/entities/mr_form_field'
 
 @Component({
     selector: 'home',
