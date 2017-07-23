@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
 import { mr_form_field } from '../../models/entities/mr_form_field'
+import { TemplatebuilderService } from '../../services/templatebuilder.service'
+import { Global } from '../../shared/global'
+
 
 @Component({
     selector: 'home',
+    providers: [TemplatebuilderService],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
+    msg: string;
+    constructor(private _templateBldrSrv: TemplatebuilderService) {
+        this._templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'GetSectionsForTemplateGroup?templateGroupId=43')
+            .subscribe(confgs => { this.config = confgs; },
+            error => this.msg = <any>error);
+    }
     formSubmitted(value) {
         console.log(value);
     }
@@ -15,9 +25,9 @@ export class HomeComponent {
             mr_form_field_id: 11,
             data_type: 'string',
             field_type: 'input',
-            display_label: 'Enter your fisrt name',  
+            display_label: 'Enter your fisrt name',
             label: 'Lirst name',
-            required_indicator:true,
+            required_indicator: true,
             validationmsg: 'First name is mandatory',
             minlenth: 6,
         },
@@ -41,7 +51,7 @@ export class HomeComponent {
             validationmsg: 'favourite food is mandatory',
         },
         {
-            mr_form_field_id:44,
+            mr_form_field_id: 44,
             data_type: 'string',
             field_type: 'button',
             label: 'Submit',
@@ -51,11 +61,11 @@ export class HomeComponent {
             data_type: 'widget',
             field_type: 'widgettest',
             widget_type: 'widgettest',
-            mr_form_field_data :  {
+            mr_form_field_data: {
                 name: 'prajeen',
                 url: 'wwww.test.com',
                 description: 'Desc',
-                sex:''
+                sex: ''
             },
         }
 
