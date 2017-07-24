@@ -20,12 +20,14 @@ export class FormCheckBoxGroupComponent implements OnInit {
     config;
     group: FormGroup;
     chkgrpvalue: string[]
-    setCheckedValue(option: string[], val: string): boolean {
-        return option.some(e => e == val);
-    }
+
     ngOnInit() {
         this.chkgrpvalue = (this.config.mr_form_field_data as string).toString().split(',');
         this.group.controls[this.config.mr_form_field_id].setValue(this.chkgrpvalue.join(','));
+    }
+
+    setCheckedValue(option: string[], val: string): boolean {
+        return option.some(e => e == val);
     }
     updateChangeValue(event) {
         if (event.target.checked) {
