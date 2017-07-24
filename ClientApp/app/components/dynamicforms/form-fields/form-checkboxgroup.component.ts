@@ -1,4 +1,4 @@
-﻿import { Component, ViewContainerRef } from '@angular/core';
+﻿import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,28 +10,36 @@ import { FormGroup } from '@angular/forms';
       [formGroup]="group">
       <label>{{ config.label }}</label>     
         <p *ngFor="let option of config.value_options">
-         <input type="checkbox" value = "option"
-            [checked]="setCheckedValue(config.mr_form_field_data,option)"
-            (change)="updateChangeValue($event)" />{{ option }}<br> 
+         <input type="checkbox" [value] = "option"
+            [checked]="setCheckedValue(chkgrpvalue,option)"
+            (change)="updateChangeValue($event)" />  {{ option }}<br> 
        </p>
-     <input
-        id="{{config.mr_form_field_id}}"
-        type="text" [value]= "chkgrpvalue" [formControlName]="config.mr_form_field_id" />
     </div>`
 })
-export class FormCheckBoxGroupComponent {
+export class FormCheckBoxGroupComponent implements OnInit {
     config;
     group: FormGroup;
-    private chkgrpvalue: string;
-    setCheckedValue(option: string[],val:string): boolean
-    {
-        this.chkgrpvalue = val;
+    chkgrpvalue: string[]
+    setCheckedValue(option: string[], val: string): boolean {
         return option.some(e => e == val);
     }
-    updateChangeValue(event)
-    {
+    ngOnInit() {
+        this.chkgrpvalue = (this.config.mr_form_field_data as string).toString().split(',');
+        this.group.controls[this.config.mr_form_field_id].setValue(this.chkgrpvalue.join(','));
+    }
+    updateChangeValue(event) {
         if (event.target.checked) {
-            this.chkgrpvalue = event.target.value;
+            if (!this.chkgrpvalue.some(i => i == event.target.value)) {
+                this.chkgrpvalue.push(event.target.value);
+            }
         }
+        else {
+            if (this.chkgrpvalue.some(i => i == event.target.value)) {
+                var index = this.chkgrpvalue.indexOf(event.target.value)
+                if (index != -1)
+                    this.chkgrpvalue.splice(index, 1);
+            }
+        }
+        this.group.controls[this.config.mr_form_field_id].setValue(this.chkgrpvalue.join(','));
     }
 }
