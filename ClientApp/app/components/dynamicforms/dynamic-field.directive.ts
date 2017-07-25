@@ -8,6 +8,7 @@ import { FormCheckBoxComponent } from './form-fields/form-checkbox.component';
 import { FormTextAreaComponent } from './form-fields/form-textarea.component';
 import { FormCheckBoxGroupComponent } from './form-fields/form-checkboxgroup.component';
 import { FormMultiSelectListBoxComponent } from './form-fields/form-multiselectlistbox.component';
+import { FormRadioButtonGroupComponent } from './form-fields/form-radiobuttongroup.component';
 
 
 import { WidgetTestComponent} from './widgets/widgettest.component'
@@ -20,6 +21,7 @@ const components = {
     textarea: FormTextAreaComponent,
     checkboxgroup: FormCheckBoxGroupComponent,
     multiselectlistbox: FormMultiSelectListBoxComponent,
+    radiobuttongroup: FormRadioButtonGroupComponent,
 
     widgettest:WidgetTestComponent,
 };

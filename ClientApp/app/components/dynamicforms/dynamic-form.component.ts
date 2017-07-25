@@ -38,18 +38,31 @@ export class DynamicFormComponent implements OnInit {
         const group = this.fb.group({});
         this.config.forEach(control =>
         {
-            if (control.required_indicator) {
-                group.addControl(control.mr_form_field_id.toString(), this.fb.control('', [Validators.required, Validators.minLength(control.minlenth)]))
+            switch (control.data_type) {
+
+                case 'multiselectlistbox':{
+                    group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))
+                    break;
+                }
+                case 'widget': {
+                    var widgetctrl = this.fb.group(control.mr_form_field_data);
+                    group.addControl(control.mr_form_field_id.toString(), widgetctrl);
+                    break;
+                }
+                default: {
+                    if (control.required_indicator) {
+                        group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data, [Validators.required, Validators.minLength(control.minlenth)]))
+                    }
+                    else {
+                        group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))
+                    }
+                    break;
+                } 
+
+            
+               
             }
-            else if (control.data_type=='widget')
-            {
-                var widgetctrl = this.fb.group(control.mr_form_field_data);
-                group.addControl(control.mr_form_field_id.toString(), widgetctrl)
-            }
-            else
-            {
-                group.addControl(control.mr_form_field_id.toString(), this.fb.control(''))
-            }
+           
                 
         });
         return group;

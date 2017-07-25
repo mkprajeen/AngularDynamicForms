@@ -71,16 +71,25 @@ export class TemplatebuilderService {
         display_label: 'select your favourite food',
         label: 'select your choice',
         value_options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
-        mr_form_field_data: 'Pizza,Hot Dogs'
+        mr_form_field_data: ['Pizza','Hot Dogs']
     },
     {
         mr_form_field_id: 88,
+        data_type: 'string',
+        field_type: 'radiobuttongroup',
+        display_label: 'Choose one food',
+        label: 'select One',
+        value_options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+        mr_form_field_data: 'Pizza'
+    },
+    {
+        mr_form_field_id: 888,
         data_type: 'string',
         field_type: 'button',
         label: 'Submit',
     },
     {
-        mr_form_field_id: 99,
+        mr_form_field_id: 999,
         data_type: 'widget',
         field_type: 'widgettest',
         widget_type: 'widgettest',
