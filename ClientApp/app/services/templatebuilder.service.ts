@@ -65,6 +65,15 @@ export class TemplatebuilderService {
         mr_form_field_data: 'Pizza,Hot Dogs'
     },
     {
+        mr_form_field_id: 77,
+        data_type: 'string',
+        field_type: 'multiselectlistbox',
+        display_label: 'select your favourite food',
+        label: 'select your choice',
+        value_options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+        mr_form_field_data: 'Pizza,Hot Dogs'
+    },
+    {
         mr_form_field_id: 88,
         data_type: 'string',
         field_type: 'button',

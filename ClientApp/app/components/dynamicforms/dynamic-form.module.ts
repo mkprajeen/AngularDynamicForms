@@ -9,6 +9,7 @@ import { FormSelectComponent } from './form-fields/form-select.component';
 import { FormCheckBoxComponent } from './form-fields/form-checkbox.component';
 import { FormTextAreaComponent } from './form-fields/form-textarea.component';
 import { FormCheckBoxGroupComponent } from './form-fields/form-checkboxgroup.component';
+import { FormMultiSelectListBoxComponent } from './form-fields/form-multiselectlistbox.component';
 
 import { WidgetTestComponent } from './widgets/widgettest.component'
 import { DynamicFieldDirective } from './dynamic-field.directive';
@@ -29,6 +30,7 @@ import { DynamicFieldDirective } from './dynamic-field.directive';
         FormCheckBoxComponent,
         FormTextAreaComponent,
         FormCheckBoxGroupComponent,
+        FormMultiSelectListBoxComponent,
 
         WidgetTestComponent
     ],
@@ -39,6 +41,7 @@ import { DynamicFieldDirective } from './dynamic-field.directive';
         FormCheckBoxComponent,
         FormTextAreaComponent,
         FormCheckBoxGroupComponent,
+        FormMultiSelectListBoxComponent,
 
         WidgetTestComponent
     ],
