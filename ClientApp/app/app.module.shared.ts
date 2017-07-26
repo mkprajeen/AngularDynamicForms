@@ -4,8 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './components/app/app.component'
 import { HomeComponent } from './components/home/home.component';
+import { EncounterComponent } from './components/encounter/encounter.component';
+import { EncounterDetailComponent } from './components/encounter/encounterdetail.component';
+
 import { HeaderComponent } from './components/shared/header/header.component'
 import { DynamicFormModule } from './components/dynamicforms/dynamic-form.module';
+import { LoginComponent } from './components/authentication/login.component'
+
 
 
 
@@ -16,7 +21,10 @@ export const sharedConfig: NgModule = {
     declarations: [
         AppComponent,
         HomeComponent,
-        HeaderComponent,        
+        EncounterComponent,
+        EncounterDetailComponent,
+        HeaderComponent,  
+        LoginComponent
     ],
     imports: [
         ReactiveFormsModule,
@@ -24,6 +32,9 @@ export const sharedConfig: NgModule = {
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
+            { path: 'encounter', component: EncounterComponent },
+            { path: 'encounterdetail/:id', component: EncounterDetailComponent },
+            { path: 'login', component: LoginComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
