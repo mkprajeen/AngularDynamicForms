@@ -12,7 +12,7 @@ export class TemplatebuilderService {
     {
         mr_form_field_id: 11,
         data_type: 'string',
-        field_type: 'input',
+        field_type: 'text',
         display_label: 'Enter your fisrt name',
         label: 'Lirst name',
         required_indicator: true,
@@ -22,7 +22,7 @@ export class TemplatebuilderService {
     {
         mr_form_field_id: 22,
         data_type: 'string',
-        field_type: 'input',
+        field_type: 'text',
         display_label: 'Enter your last name',
         label: 'Last name',
         required_indicator: true,
@@ -81,6 +81,26 @@ export class TemplatebuilderService {
         label: 'select One',
         value_options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
         mr_form_field_data: 'Pizza'
+    },
+    {
+        mr_form_field_id: 99,
+        data_type: 'date',
+        field_type: 'date',
+        label: 'Date of Birth',
+        required_indicator: true,
+        validationmsg: 'Date of birth is mandatory',
+        mr_form_field_data: '2017-01-26',
+
+    },
+    {
+        mr_form_field_id: 111,
+        data_type: 'date',
+        field_type: 'time',
+        label: 'Enter Time',
+        required_indicator: true,
+        validationmsg: 'Time is mandatory',
+        mr_form_field_data: '22:30',
+
     },
     {
         mr_form_field_id: 888,

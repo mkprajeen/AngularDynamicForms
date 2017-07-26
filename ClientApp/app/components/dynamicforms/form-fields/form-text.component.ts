@@ -2,7 +2,7 @@
 import { FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'form-input',
+    selector: 'form-text',
     //styleUrls: ['form-input.component.scss'],
     template: `
     <div 
@@ -19,7 +19,7 @@ import { FormGroup } from '@angular/forms';
         </div>       
     </div>`
 })
-export class FormInputComponent {
+export class FormTextComponent {
     config;
     group: FormGroup;
 }
