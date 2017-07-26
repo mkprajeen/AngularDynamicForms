@@ -10,9 +10,7 @@ import { EncounterDetailComponent } from './components/encounter/encounterdetail
 import { HeaderComponent } from './components/shared/header/header.component'
 import { DynamicFormModule } from './components/dynamicforms/dynamic-form.module';
 import { LoginComponent } from './components/authentication/login.component'
-
-
-
+import { AuthenticationGuard } from './components/authentication/authentication-guard'
 
 
 
@@ -24,14 +22,16 @@ export const sharedConfig: NgModule = {
         EncounterComponent,
         EncounterDetailComponent,
         HeaderComponent,  
-        LoginComponent
+        LoginComponent,
+                
     ],
     imports: [
         ReactiveFormsModule,
         DynamicFormModule,
+        
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
+            { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard] },
             { path: 'encounter', component: EncounterComponent },
             { path: 'encounterdetail/:id', component: EncounterDetailComponent },
             { path: 'login', component: LoginComponent },

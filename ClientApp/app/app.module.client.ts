@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { sharedConfig } from './app.module.shared';
 import { TemplatebuilderService } from './services/templatebuilder.service'
+import { AuthenticationGuard } from './components/authentication/authentication-guard'
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -15,7 +16,8 @@ import { TemplatebuilderService } from './services/templatebuilder.service'
         ...sharedConfig.imports
     ],
     providers: [
-        { provide: 'ORIGIN_URL', useValue: location.origin }, TemplatebuilderService
+        { provide: 'ORIGIN_URL', useValue: location.origin },
+        TemplatebuilderService, AuthenticationGuard
     ]
 })
 export class AppModule {
