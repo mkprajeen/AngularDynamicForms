@@ -19,10 +19,29 @@
             </div>
         </div>
 
-
-
         <button type="submit" class="btn btn-success" [disabled]="!loginModel.valid">Login</button>
 
     </form>
 
 </div>
+
+<!--  Template form --------
+    <div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginModel, loginModel.isValid)">
+        <div class="form-group">
+            <label for="username">UserName</label>
+            <input type="text" id="username" name="username" [(ngModel)]="loginModel.username" class="form-control" placeholder="Enter username" #username="ngModel">
+            <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                Userame is required!
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" [(ngModel)]="loginModel.password" class="form-control" placeholder="password" #password="ngModel">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password is required!
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+    </form>
+</div>-->
