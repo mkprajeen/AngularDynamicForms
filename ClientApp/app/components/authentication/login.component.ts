@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
+import {LocalStorageService } from '../../services/localstorage.service'
 
 @Component({
     selector: 'login-component',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
     loginModel: FormGroup;
     public submitted: boolean;
-    constructor(private fb: FormBuilder, private router:Router) {
+    constructor(private fb: FormBuilder, private router:Router, private storage:LocalStorageService) {
 
     }
     ngOnInit() {
@@ -20,9 +21,10 @@ export class LoginComponent implements OnInit {
         });
     }
     onSubmit({ value, valid }: { value: Login, valid: boolean }) {
-        this.submitted = true;
-        this.router.navigate(['/home']);
-        console.log(value, valid);
+        if (value.username == 'dev') {
+            this.storage.set('currentUser', 'Prajeen Kumar MK');
+            this.router.navigate(['/home']);
+        }
     }
 }
 export class Login  {

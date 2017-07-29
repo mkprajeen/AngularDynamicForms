@@ -8,6 +8,9 @@
            </a>
        </div>
        <p class=" navbar-text">Infinity Inc</p>
-       <p class="navbar-text navbar-right">Welcome: Prajeen Kumar</p>
+       <div class="navbar-text navbar-right" >
+           <label *ngIf="loggin"  >Welcome: {{logedInUser}}</label>
+           <a (click)="onLogout()" *ngIf="loggin" >logout</a>
+       </div>
    </div>
 </nav>

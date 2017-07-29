@@ -6,7 +6,6 @@ import { Global } from '../../shared/global'
 
 @Component({
     selector: 'home',
-    providers: [TemplatebuilderService],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {

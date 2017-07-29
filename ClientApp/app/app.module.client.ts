@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { sharedConfig } from './app.module.shared';
 import { TemplatebuilderService } from './services/templatebuilder.service'
 import { AuthenticationGuard } from './components/authentication/authentication-guard'
+import { LocalStorageService } from './services/localstorage.service'
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -17,7 +18,7 @@ import { AuthenticationGuard } from './components/authentication/authentication-
     ],
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin },
-        TemplatebuilderService, AuthenticationGuard
+        TemplatebuilderService, AuthenticationGuard, LocalStorageService
     ]
 })
 export class AppModule {
