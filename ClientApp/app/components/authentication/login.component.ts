@@ -1,7 +1,10 @@
-﻿import { Component, OnInit} from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
-import {LocalStorageService } from '../../services/localstorage.service'
+import { LocalStorageService } from '../../services/localstorage.service'
+import { AuthenticationService } from '../../services/authentication.service'
+import { Global } from '../../shared/global'
+
 
 @Component({
     selector: 'login-component',
@@ -9,8 +12,12 @@ import {LocalStorageService } from '../../services/localstorage.service'
 })
 export class LoginComponent implements OnInit {
     loginModel: FormGroup;
-    public submitted: boolean;
-    constructor(private fb: FormBuilder, private router:Router, private storage:LocalStorageService) {
+    errorMessage: string;
+
+    constructor(private fb: FormBuilder,
+        private router: Router,
+        private storage: LocalStorageService,
+        private authServ: AuthenticationService) {
 
     }
     ngOnInit() {
@@ -21,16 +28,34 @@ export class LoginComponent implements OnInit {
         });
     }
     onSubmit({ value, valid }: { value: Login, valid: boolean }) {
-        if (value.username == 'dev') {
-            this.storage.set('currentUser', 'Prajeen Kumar MK');
-            this.router.navigate(['/home']);
-        }
+
+        this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: value.username, password: value.password })
+            .subscribe(token => {
+                this.storage.set('token', token.access_token);
+                //TODO: get user details and user profile info
+                if (value.username == 'dev') {
+                    this.storage.set('currentUser', 'Prajeen Kumar MK');
+                    this.router.navigate(['/home']);
+                }
+            },
+            error => this.errorMessage = <any>error);
+
+
     }
 }
-export class Login  {
+export class Login {
 
     public username: string;
-    public passoword: string;
+    public password: string;
+}
+export class Credentials {
+    public user: string;
+    public password: string;
+}
+
+export class JwtToken {
+    public access_token: string;
+    public token_type: string;
 }
 
 

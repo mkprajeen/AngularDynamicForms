@@ -1,9 +1,11 @@
 ﻿import { Injectable } from '@angular/core'
-import { Http, Response, Headers } from '@angular/http'
+import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import { LocalStorageService } from '../services/localstorage.service'
 
 @Injectable()
 export class TemplatebuilderService {
@@ -122,15 +124,19 @@ export class TemplatebuilderService {
     }
 
     ];
-   constructor(private _http: Http)
-   { }
-    get(url: string):Observable<any>
-    {
-        return this._http.get(url)
-            .map((response: Response) => <any>response.json())
-            // .do(data => console.log("All: " + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
+   constructor(private _http: Http, private store: LocalStorageService) {
+   }
+    
+   get(url: string): Observable<any> {
+       var token = this.store.get('token').value;
+       //let headers = new Headers([{ 'Content-Type': 'application/json' },
+       //    { 'Authorization': 'Bearer ' + token }]);
+       let headers = new Headers({ 'Authorization': 'Bearer ' + token });
+       let options = new RequestOptions({ headers: headers });
+       return this._http.get(url, options)
+           .map((response: Response) => <any>response.json())
+           .catch(this.handleError);
+   }
     
     getfromLocal(): Array<any> {
  

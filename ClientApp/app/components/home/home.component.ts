@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { mr_form_field } from '../../models/entities/mr_form_field'
 import { TemplatebuilderService } from '../../services/templatebuilder.service'
 import { Global } from '../../shared/global'
@@ -8,19 +8,29 @@ import { Global } from '../../shared/global'
     selector: 'home',
     templateUrl: './home.component.html'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit  {
     msg: string;
+    config: mr_form_field[];
+    config1: any;
     constructor(private _templateBldrSrv: TemplatebuilderService) {
-        //this._templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'GetSectionsForTemplateGroup?templateGroupId=43')
-        //    .subscribe(confgs => { this.config = confgs; },
-        //    error => this.msg = <any>error);
-        this.config = this._templateBldrSrv.getfromLocal();
-       
+        
+       //this.config = this._templateBldrSrv.getfromLocal();
+    }
+    ngOnInit() {
+        this._templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=43')
+            .subscribe(confgs =>
+            {
+                var tt = confgs[0].mr_form_field;
+                this.config = tt;
+            },
+            error => this.msg = <any>error);
+        
+
     }
     formSubmitted(value) {
         console.log(value);
     }
-    config: mr_form_field[];
+   
     
 
 }

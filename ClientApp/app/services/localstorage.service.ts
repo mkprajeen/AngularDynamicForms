@@ -11,15 +11,7 @@ export class LocalStorageService {
     }
 
     get(key:string) {
-        var tt = LocalStorageService.storage.find(i => i.key == key);
-        return tt;
-        //{
-        //    if (item.key == key)
-        //    {
-        //        return item;
-        //    }
-        //});
-        //return null;
+        return LocalStorageService.storage.find(i => i.key == key);
     }
 
     set(key:string, value:string) {

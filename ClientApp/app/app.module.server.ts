@@ -5,6 +5,7 @@ import { TemplatebuilderService } from './services/templatebuilder.service'
 import { AuthenticationGuard } from './components/authentication/authentication-guard'
 import { FormsModule } from '@angular/forms';
 import { LocalStorageService } from './services/localstorage.service'
+import { AuthenticationService } from './services/authentication.service'
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -16,7 +17,7 @@ import { LocalStorageService } from './services/localstorage.service'
     ],
     providers: [
         
-        TemplatebuilderService, AuthenticationGuard, LocalStorageService
+        TemplatebuilderService, AuthenticationGuard, LocalStorageService, AuthenticationService
     ]
 })
 export class AppModule {
