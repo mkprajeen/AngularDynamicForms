@@ -11,8 +11,8 @@ import { FormGroup } from '@angular/forms';
       <label>{{ config.label }}</label>
       <select [formControlName]="config.mr_form_field_id">
         <option value="option.value">{{ config.display_label }}</option>
-        <option *ngFor="let option of config.value_options">
-          {{ option }}
+        <option *ngFor="let option of config.mr_form_field_value_option">
+          {{ option.value_option }}
         </option>
       </select>
     </div>

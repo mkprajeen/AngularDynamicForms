@@ -1,8 +1,8 @@
 ﻿export class mr_form_field {
     constructor() {
-       // this.mr_form_field_data = new HashSet<mr_form_field_data>();
-        //this.mr_form_field_value_option = new HashSet<mr_form_field_value_option>();
-        
+        //this.mr_form_field_data =[];
+        this.mr_form_field_value_option = [];
+
     }
     public mr_form_field_id: number;
     public mr_template_section_id?: number;
@@ -38,6 +38,16 @@
     public mr_form_field_data?: any;
 
     //public mr_form_field_data: ICollection<mr_form_field_data>;
-    //public mr_form_field_value_option: ICollection<mr_form_field_value_option>;
+    public mr_form_field_value_option?: mr_form_field_value_option[];
     //public mr_template_section: mr_template_section;
+}
+
+export class mr_form_field_value_option {
+    public mr_form_field_value_id: number;
+    public mr_form_field_id: number;
+    public value_option: string;
+    public order_index: number;
+    public is_active: boolean;
+
+    //public virtual mr_form_field mr_form_field { get; set; }
 }

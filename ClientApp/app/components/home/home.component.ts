@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit  {
        //this.config = this._templateBldrSrv.getfromLocal();
     }
     ngOnInit() {
-        this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=56')
+        this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=43')
             .subscribe(confgs =>
             {
                 const controlTypeMapping = {
@@ -38,8 +38,9 @@ export class HomeComponent implements OnInit  {
                     'Label': 'text',
                     'widget': 'widget',
                 };
-                var tt = confgs[1].mr_form_field ;
-                this.config = [tt[0], tt[1], tt[2]];
+                var formfields = confgs[0].mr_form_field;
+                this.config = [];
+                this.config = formfields;
                 this.config.forEach(i =>
                 {
                     i.field_type = controlTypeMapping[i.field_type];
