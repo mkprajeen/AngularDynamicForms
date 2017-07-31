@@ -13,6 +13,7 @@ import { Global } from '../../shared/global'
 export class HomeComponent implements OnInit  {
     msg: string;
     config: any[];
+  
 
     constructor(private templateBldrSrv: TemplatebuilderService, private uiNotServ: UINotificationService) {
         
@@ -22,9 +23,28 @@ export class HomeComponent implements OnInit  {
         this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=56')
             .subscribe(confgs =>
             {
-                //var tt = confgs[1].mr_form_field ;
-                //this.config = [tt[0], tt[1], tt[2]];
-                this.uiNotServ.dynamicControls.next(confgs);
+                const controlTypeMapping = {
+                    'Button': 'button',
+                    'Text Box': 'text',
+                    'Dropdown List': 'select',
+                    'Check Box': 'checkbox',
+                    'Multiline Text Box': 'textarea',
+                    'Check Box Group': 'checkboxgroup',
+                    'Multi Select List Box': 'multiselectlistbox',
+                    'Radio Button Group': 'radiobuttongroup',
+                    'DatePicker': 'date',
+                    'time': 'time',
+                    'Small Text Box': 'text',
+                    'Label': 'text',
+                    'widget': 'widget',
+                };
+                var tt = confgs[1].mr_form_field ;
+                this.config = [tt[0], tt[1], tt[2]];
+                this.config.forEach(i =>
+                {
+                    i.field_type = controlTypeMapping[i.field_type];
+                })
+                this.uiNotServ.dynamicControls.next(this.config);
             },
             error =>
             {

@@ -43,25 +43,10 @@ export class DynamicFormComponent implements OnInit {
     }
 
     createGroup() {
-        const controlTypeMapping = {
-            'Button': 'button',
-            'Text Box': 'text',
-            'Dropdown List': 'select',
-            'Check Box': 'checkbox',
-            'Multiline Text Box': 'textarea',
-            'Check Box Group': 'checkboxgroup',
-            'Multi Select List Box': 'multiselectlistbox',
-            'Radio Button Group': 'radiobuttongroup',
-            'DatePicker': 'date',
-            'time': 'time',
-            'Small Text Box': 'text',
-            'Label': 'text',
-            'widget': 'widget',
-        };
+        
         const group = this.fb.group({});
         this.config.forEach(control =>
         {
-           // var ctrtype = controlTypeMapping[control.field_type];
             switch (control.field_type) {
 
                 case 'multiselectlistbox':{
