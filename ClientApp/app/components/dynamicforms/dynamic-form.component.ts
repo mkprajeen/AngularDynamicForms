@@ -1,5 +1,6 @@
 ﻿import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UINotificationService } from '../../shared/uinotification.service'
 import { mr_form_field } from '../../models/entities/mr_form_field'
 
 @Component({
@@ -19,26 +20,49 @@ import { mr_form_field } from '../../models/entities/mr_form_field'
     </form>
   `
 })
+
 export class DynamicFormComponent implements OnInit {
     @Input()
-    config: mr_form_field[] = [];
+    config: any[] = [];
 
     @Output()
     submitted: EventEmitter<any> = new EventEmitter<any>();
-
+    
     form: FormGroup;
 
-    constructor(private fb: FormBuilder) { }
+    constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
+        this.uiNotiServ.dynamicControls.subscribe(ctrols => {
+            this.config = ctrols;
+            this.form = this.createGroup();
+        });
+
+    }
 
     ngOnInit() {
-        this.form = this.createGroup();
+        //this.form = this.createGroup();
     }
 
     createGroup() {
+        const controlTypeMapping = {
+            'Button': 'button',
+            'Text Box': 'text',
+            'Dropdown List': 'select',
+            'Check Box': 'checkbox',
+            'Multiline Text Box': 'textarea',
+            'Check Box Group': 'checkboxgroup',
+            'Multi Select List Box': 'multiselectlistbox',
+            'Radio Button Group': 'radiobuttongroup',
+            'DatePicker': 'date',
+            'time': 'time',
+            'Small Text Box': 'text',
+            'Label': 'text',
+            'widget': 'widget',
+        };
         const group = this.fb.group({});
         this.config.forEach(control =>
         {
-            switch (control.data_type) {
+           // var ctrtype = controlTypeMapping[control.field_type];
+            switch (control.field_type) {
 
                 case 'multiselectlistbox':{
                     group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))

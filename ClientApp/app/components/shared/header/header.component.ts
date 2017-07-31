@@ -18,10 +18,11 @@ export class HeaderComponent  {
     }
     onLogout()
     {
+        this.router.navigate(['/login']);
         this.loggin = false;
         this.logedInUser = null;
         this.storage.clear();
-        this.router.navigate(['/login']);
+       
 
     }
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { mr_form_field } from '../../models/entities/mr_form_field'
 import { TemplatebuilderService } from '../../services/templatebuilder.service'
+import { UINotificationService } from '../../shared/uinotification.service'
 import { Global } from '../../shared/global'
+
 
 
 @Component({
@@ -10,20 +12,25 @@ import { Global } from '../../shared/global'
 })
 export class HomeComponent implements OnInit  {
     msg: string;
-    config: mr_form_field[];
-    config1: any;
-    constructor(private _templateBldrSrv: TemplatebuilderService) {
+    config: any[];
+
+    constructor(private templateBldrSrv: TemplatebuilderService, private uiNotServ: UINotificationService) {
         
        //this.config = this._templateBldrSrv.getfromLocal();
     }
     ngOnInit() {
-        this._templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=43')
+        this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=56')
             .subscribe(confgs =>
             {
-                var tt = confgs[0].mr_form_field;
-                this.config = tt;
+                //var tt = confgs[1].mr_form_field ;
+                //this.config = [tt[0], tt[1], tt[2]];
+                this.uiNotServ.dynamicControls.next(confgs);
             },
-            error => this.msg = <any>error);
+            error =>
+            {
+                this.msg = <any>error;
+                console.log(this.msg);
+            });
         
 
     }

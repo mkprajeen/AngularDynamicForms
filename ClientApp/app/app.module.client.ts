@@ -7,6 +7,7 @@ import { TemplatebuilderService } from './services/templatebuilder.service'
 import { AuthenticationGuard } from './components/authentication/authentication-guard'
 import { LocalStorageService } from './services/localstorage.service'
 import { AuthenticationService } from './services/authentication.service'
+import { UINotificationService } from './shared/uinotification.service'
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -19,7 +20,7 @@ import { AuthenticationService } from './services/authentication.service'
     ],
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin },
-        TemplatebuilderService, AuthenticationGuard, LocalStorageService, AuthenticationService
+        TemplatebuilderService, AuthenticationGuard, LocalStorageService, AuthenticationService, UINotificationService
     ]
 })
 export class AppModule {
