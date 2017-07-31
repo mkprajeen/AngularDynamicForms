@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../../services/localstorage.service'
+import { UINotificationService } from '../../shared/uinotification.service'
 import { AuthenticationService } from '../../services/authentication.service'
 import { Global } from '../../shared/global'
 
@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
         private router: Router,
-        private storage: LocalStorageService,
-        private authServ: AuthenticationService) {
+        private authServ: AuthenticationService,
+        private uiNotServ: UINotificationService  ) {
 
     }
     ngOnInit() {
@@ -31,10 +31,11 @@ export class LoginComponent implements OnInit {
 
         this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: value.username, password: value.password })
             .subscribe(token => {
-                this.storage.set('token', token.access_token);
+                localStorage.setItem('token', token.access_token);
                 //TODO: get user details and user profile info
                 if (value.username == 'dev') {
-                    this.storage.set('currentUser', 'Prajeen Kumar MK');
+                    localStorage.setItem('currentUser', 'Prajeen Kumar MK');
+                    this.uiNotServ.loginUser.next('Prajeen Kumar MK');
                     this.router.navigate(['/home']);
                 }
             },

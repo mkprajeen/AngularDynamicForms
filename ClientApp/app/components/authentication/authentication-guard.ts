@@ -1,19 +1,21 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { LocalStorageService } from '../../services/localstorage.service'
+import { UINotificationService } from '../../shared/uinotification.service'
 
 
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
-
-    constructor(private router: Router, private storage : LocalStorageService) {
-       
+    currentUser: string;
+    constructor(private router: Router,
+        private uiNotiServ: UINotificationService ) {
+        this.uiNotiServ.loginUser.subscribe(user => {
+            this.currentUser = user;
+        });
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        var item = this.storage.get('currentUser');
-        if (item != null) {
+        if (this.currentUser != null) {
             // logged in so return true
             return true;
         }

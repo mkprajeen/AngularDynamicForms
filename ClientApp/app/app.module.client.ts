@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { sharedConfig } from './app.module.shared';
 import { TemplatebuilderService } from './services/templatebuilder.service'
 import { AuthenticationGuard } from './components/authentication/authentication-guard'
-import { LocalStorageService } from './services/localstorage.service'
 import { AuthenticationService } from './services/authentication.service'
 import { UINotificationService } from './shared/uinotification.service'
 
@@ -20,7 +19,7 @@ import { UINotificationService } from './shared/uinotification.service'
     ],
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin },
-        TemplatebuilderService, AuthenticationGuard, LocalStorageService, AuthenticationService, UINotificationService
+        TemplatebuilderService, AuthenticationGuard, AuthenticationService, UINotificationService
     ]
 })
 export class AppModule {

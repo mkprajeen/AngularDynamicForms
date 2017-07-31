@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 export class UINotificationService {
 
     dynamicControls: Subject<any[]> = new Subject<any[]>();
+    loginUser: Subject<string> = new Subject<string>();
     constructor() {
     }
 }

@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { LocalStorageService } from '../services/localstorage.service'
 
 @Injectable()
 export class TemplatebuilderService {
@@ -124,11 +123,11 @@ export class TemplatebuilderService {
     }
 
     ];
-   constructor(private _http: Http, private store: LocalStorageService) {
+   constructor(private _http: Http) {
    }
     
    get(url: string): Observable<any> {
-       var token = this.store.get('token').value;
+       var token= localStorage.getItem('token');
        //let headers = new Headers([{ 'Content-Type': 'application/json' },
        //    { 'Authorization': 'Bearer ' + token }]);
        let headers = new Headers({ 'Authorization': 'Bearer ' + token });

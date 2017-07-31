@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../../../services/localstorage.service'
+import { UINotificationService } from '../../../shared/uinotification.service'
 
 @Component({
     selector: 'shared-header',
@@ -9,8 +9,8 @@ import { LocalStorageService } from '../../../services/localstorage.service'
 export class HeaderComponent  {
     loggin: boolean=false;
     logedInUser: string;
-    constructor(private router: Router, private storage: LocalStorageService) {
-        storage.subject.subscribe(currentUser => {
+    constructor(private router: Router, private uiNotiServ: UINotificationService) {
+        this.uiNotiServ.loginUser.subscribe(currentUser => {
             this.loggin = true;
             this.logedInUser = currentUser;
         });
@@ -18,11 +18,11 @@ export class HeaderComponent  {
     }
     onLogout()
     {
-        this.router.navigate(['/login']);
         this.loggin = false;
         this.logedInUser = null;
-        this.storage.clear();
-       
+        localStorage.clear();
+        this.router.navigate(['/login']);
+        location.reload(true);
 
     }
 

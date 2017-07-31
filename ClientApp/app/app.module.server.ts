@@ -4,7 +4,6 @@ import { sharedConfig } from './app.module.shared';
 import { TemplatebuilderService } from './services/templatebuilder.service'
 import { AuthenticationGuard } from './components/authentication/authentication-guard'
 import { FormsModule } from '@angular/forms';
-import { LocalStorageService } from './services/localstorage.service'
 import { AuthenticationService } from './services/authentication.service'
 import { UINotificationService } from './shared/uinotification.service'
 
@@ -18,7 +17,7 @@ import { UINotificationService } from './shared/uinotification.service'
     ],
     providers: [
         
-        TemplatebuilderService, AuthenticationGuard, LocalStorageService, AuthenticationService, UINotificationService
+        TemplatebuilderService, AuthenticationGuard, AuthenticationService, UINotificationService
     ]
 })
 export class AppModule {
