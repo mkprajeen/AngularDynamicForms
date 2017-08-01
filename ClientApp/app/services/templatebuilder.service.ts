@@ -127,7 +127,8 @@ export class TemplatebuilderService {
    }
     
    get(url: string): Observable<any> {
-       var token= localStorage.getItem('token');
+       if (typeof window !== 'undefined') 
+             var token= localStorage.getItem('token');
        //let headers = new Headers([{ 'Content-Type': 'application/json' },
        //    { 'Authorization': 'Bearer ' + token }]);
        let headers = new Headers({ 'Authorization': 'Bearer ' + token });
