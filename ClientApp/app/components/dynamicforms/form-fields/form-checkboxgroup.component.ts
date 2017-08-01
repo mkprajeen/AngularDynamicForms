@@ -9,10 +9,10 @@ import { FormGroup } from '@angular/forms';
       class="dynamic-field form-select"
       [formGroup]="group">
       <label>{{ config.label }}</label>     
-        <p *ngFor="let option of config.value_options">
-         <input type="checkbox" [value] = "option"
-            [checked]="setCheckedValue(chkgrpvalue,option)"
-            (change)="updateChangeValue($event)" />  {{ option }}<br> 
+        <p *ngFor="let option of config.mr_form_field_value_option">
+         <input type="checkbox" [value] = "option.value_option"
+            [checked]="setCheckedValue(chkgrpvalue,option.value_option)"
+            (change)="updateChangeValue($event)" />  {{ option.value_option }}<br> 
        </p>
     </div>`
 })

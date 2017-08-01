@@ -9,10 +9,10 @@ import { FormGroup } from '@angular/forms';
       class="dynamic-field form-select"
       [formGroup]="group">
       <label>{{ config.label }}</label>     
-        <p *ngFor="let option of config.value_options">
-         <input type="radio" [formControlName]="config.mr_form_field_id"  [value] = "option"
+        <p *ngFor="let option of config.mr_form_field_value_option">
+         <input type="radio" [formControlName]="config.mr_form_field_id"  [value] = "option.value_option"
             
-             />  {{ option }}<br> 
+             />  {{ option.value_option }}<br> 
        </p>
     </div>`
 })

@@ -15,7 +15,8 @@ export class AuthenticationGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.currentUser != null) {
+        //if (this.currentUser != null) {
+        if ((typeof window !== 'undefined') && localStorage.getItem('currentUser')!=null){
             // logged in so return true
             return true;
         }
