@@ -10,8 +10,8 @@ import { FormGroup } from '@angular/forms';
       [formGroup]="group">
       <label>{{ config.label }}</label>
       <select [formControlName]="config.mr_form_field_id"  multiple >
-        <option *ngFor="let option of config.value_options" [value]="option">
-          {{ option }}
+        <option *ngFor="let option of config.mr_form_field_value_option" [value]="option.value_option">
+          {{ option.value_option }}
         </option>
       </select>
     </div>

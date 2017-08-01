@@ -17,6 +17,7 @@ import { mr_form_field } from '../../models/entities/mr_form_field'
         [config]="field"
         [group]="form">
       </ng-container>
+      {{group.value | json }}
     </form>
   `
 })
@@ -49,7 +50,8 @@ export class DynamicFormComponent implements OnInit {
         {
             switch (control.field_type) {
 
-                case 'multiselectlistbox':{
+                case 'multiselectlistbox': {
+                    //control.mr_form_field_data- comma separated value to be converted to a array
                     group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))
                     break;
                 }
@@ -67,8 +69,6 @@ export class DynamicFormComponent implements OnInit {
                     }
                     break;
                 } 
-
-            
                
             }
            
