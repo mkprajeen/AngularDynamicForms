@@ -1,3 +1,15 @@
 ﻿<div>
     <a>Encounter</a> 
+    
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+           
+        </tr>
+        <tr *ngFor="let encounter of encounters; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{encounter.chief_complaint}}</td>
+        </tr>
+    </table>`
 </div>

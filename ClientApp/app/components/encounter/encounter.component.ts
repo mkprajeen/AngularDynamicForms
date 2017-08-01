@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service'
+import { TemplatebuilderService } from '../../services/templatebuilder.service'
 import { Global } from '../../shared/global'
 
 
@@ -8,13 +8,17 @@ import { Global } from '../../shared/global'
     templateUrl: './encounter.component.html'
 })
 export class EncounterComponent implements OnInit {
-
-    constructor(private authService: AuthenticationService) {
+    encounters: any[]=[];
+    msg: string;
+    constructor(private tempService: TemplatebuilderService) {
 
     }
     ngOnInit(){
-        //this.authService.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=43')
-        //    .subscribe(confgs => { this.config = confgs; },
-        //    error => this.msg = <any>error);
+        this.tempService.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetAllEncountersByPatientId?patientId=52359')
+            .subscribe(encounters =>
+            {
+                this.encounters = encounters;
+            },
+            error => this.msg = <any>error);
     }
 }
