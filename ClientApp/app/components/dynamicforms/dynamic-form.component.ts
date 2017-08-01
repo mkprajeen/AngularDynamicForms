@@ -17,7 +17,7 @@ import { mr_form_field } from '../../models/entities/mr_form_field'
         [config]="field"
         [group]="form">
       </ng-container>
-      {{group.value | json }}
+      {{form.value | json }}
     </form>
   `
 })
