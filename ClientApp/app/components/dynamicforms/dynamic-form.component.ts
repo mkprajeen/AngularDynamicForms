@@ -36,18 +36,17 @@ export class DynamicFormComponent implements OnInit {
         //    this.config = ctrols;
         //    this.form = this.createGroup();
         //});
+        
+    }
+
+    ngOnInit() {
         try {
-            if (this.config != null)
-                this.form = this.createGroup();
+            console.log(this.config);
+            this.form = this.createGroup();
         }
         catch (err) {
             console.log(err);
         }
-
-    }
-
-    ngOnInit() {
-       
     }
 
     createGroup() {
