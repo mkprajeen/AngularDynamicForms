@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './components/app/app.component'
 import { HomeComponent } from './components/home/home.component';
+import { MainFormComponent } from './components/dynamicforms/main-form/main-form.component'
 import { EncounterComponent } from './components/encounter/encounter.component';
 import { EncounterDetailComponent } from './components/encounter/encounterdetail.component';
 
@@ -19,6 +20,7 @@ export const sharedConfig: NgModule = {
     declarations: [
         AppComponent,
         HomeComponent,
+        MainFormComponent,
         EncounterComponent,
         EncounterDetailComponent,
         HeaderComponent,  

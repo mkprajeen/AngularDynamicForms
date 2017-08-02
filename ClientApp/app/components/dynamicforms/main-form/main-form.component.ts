@@ -1,28 +1,30 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UINotificationService } from '../../../shared/uinotification.service'
 
-import { Referer } from '../../../models/referer.model';
 
 @Component({
     selector: 'main-form',
     templateUrl: './main-form.component.html'
 })
 export class MainFormComponent implements OnInit {
- 
+   // @Input()
+    encounterSections: any[] = [];
+
    public referer: FormGroup;
    public submitted: boolean;
 
 
-    constructor(private fb: FormBuilder){}
+   constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
+       this.uiNotiServ.dynamicSections.subscribe(enSection => {
+           this.encounterSections = enSection;
+       });
+   }
     ngOnInit(){
 
-        this.referer = this.fb.group({
-            name: ['', [Validators.required, Validators.minLength(5)]],
-            url: ['', [Validators.required]],
-            description: ['', [Validators.required]]
-        });
+
     }
-    onSubmit({ value, valid } : { value: Referer, valid: boolean }){
+    onSubmit({ value, valid } : { value: any, valid: boolean }){
         this.submitted = true;
         console.log(value, valid);
 

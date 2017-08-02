@@ -1,10 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { FormGroup, FormControl  } from '@angular/forms';
 
-
-
-import { Referer } from '../../../models/referer.model';
-
 @Component({
     selector: 'widget-test',
     templateUrl: './widgettest.component.html'

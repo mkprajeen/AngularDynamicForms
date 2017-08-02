@@ -32,18 +32,45 @@ export class DynamicFormComponent implements OnInit {
     form: FormGroup;
 
     constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
-        this.uiNotiServ.dynamicControls.subscribe(ctrols => {
-            this.config = ctrols;
-            this.form = this.createGroup();
-        });
+        //this.uiNotiServ.dynamicControls.subscribe(ctrols => {
+        //    this.config = ctrols;
+        //    this.form = this.createGroup();
+        //});
+        try {
+            if (this.config != null)
+                this.form = this.createGroup();
+        }
+        catch (err) {
+            console.log(err);
+        }
 
     }
 
     ngOnInit() {
-        //this.form = this.createGroup();
+       
     }
 
     createGroup() {
+        const controlTypeMapping = {
+            'Button': 'button',
+            'Text Box': 'text',
+            'Dropdown List': 'select',
+            'Check Box': 'checkbox',
+            'Multiline Text Box': 'textarea',
+            'Check Box Group': 'checkboxgroup',
+            'Multi Select List Box': 'multiselectlistbox',
+            'Radio Button Group': 'radiobuttongroup',
+            'DatePicker': 'date',
+            'time': 'time',
+            'Small Text Box': 'text',
+            'Label': 'text',
+            'widget': 'widget',
+             '': 'text'
+        };
+         this.config.forEach(i =>
+                {
+                    i.field_type = controlTypeMapping[i.field_type];
+                })
         
         const group = this.fb.group({});
         this.config.forEach(control =>

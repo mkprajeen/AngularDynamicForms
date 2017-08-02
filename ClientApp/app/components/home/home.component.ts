@@ -12,7 +12,7 @@ import { Global } from '../../shared/global'
 })
 export class HomeComponent implements OnInit  {
     msg: string;
-    config: any[];
+    encounterSections: any[];
   
 
     constructor(private templateBldrSrv: TemplatebuilderService, private uiNotServ: UINotificationService) {
@@ -20,32 +20,16 @@ export class HomeComponent implements OnInit  {
        //this.config = this._templateBldrSrv.getfromLocal();
     }
     ngOnInit() {
-        this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT +'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=43')
-            .subscribe(confgs =>
+        this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT + 'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=56')
+       // this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT + 'templatebuilder/GetSectionsForEncounter?patientEncounterId=3258') 
+            .subscribe(enSections =>
             {
-                const controlTypeMapping = {
-                    'Button': 'button',
-                    'Text Box': 'text',
-                    'Dropdown List': 'select',
-                    'Check Box': 'checkbox',
-                    'Multiline Text Box': 'textarea',
-                    'Check Box Group': 'checkboxgroup',
-                    'Multi Select List Box': 'multiselectlistbox',
-                    'Radio Button Group': 'radiobuttongroup',
-                    'DatePicker': 'date',
-                    'time': 'time',
-                    'Small Text Box': 'text',
-                    'Label': 'text',
-                    'widget': 'widget',
-                };
-                var formfields = confgs[0].mr_form_field;
-                this.config = [];
-                this.config = formfields;
-                this.config.forEach(i =>
-                {
-                    i.field_type = controlTypeMapping[i.field_type];
-                })
-                this.uiNotServ.dynamicControls.next(this.config);
+               
+                //var formfields = enSections[1].mr_form_field;
+                this.encounterSections = [];
+                this.encounterSections = enSections;
+               
+                this.uiNotServ.dynamicSections.next(this.encounterSections);
             },
             error =>
             {
