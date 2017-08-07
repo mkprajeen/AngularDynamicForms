@@ -1,12 +1,21 @@
 ﻿<div class="container">
-    <ul class="nav nav-tabs">
+    <!--<ul class="nav nav-tabs">
         <li *ngFor="let section of encounterSections">
             <a>{{section.section_heading}} </a>
-            <dynamic-form [config]="section.mr_form_field">loading...</dynamic-form>
+            <dynamic-form *ngIf="section.section_heading" [config]="section.mr_form_field">loading...</dynamic-form>
         </li>
         
-        
-    </ul>
+    </ul>-->
+    <!--<md-tab-group>
+        <md-tab label="Tab 5">Content 1</md-tab>
+        <md-tab label="Tab 6">Content 2<</md-tab>
+    </md-tab-group>-->
+
+    <md-tab-group>
+        <md-tab *ngFor="let section of encounterSections" [label]="section.section_heading">
+            <dynamic-form *ngIf="section.section_heading" [config]="section.mr_form_field">loading...</dynamic-form>
+        </md-tab>
+    </md-tab-group>
 
    <!--<dynamic-form  *ngFor="let section of encounterSections" [config]="section.mr_form_field">loading...</dynamic-form>-->
 

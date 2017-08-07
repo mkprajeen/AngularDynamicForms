@@ -12,7 +12,9 @@ import { HeaderComponent } from './components/shared/header/header.component'
 import { DynamicFormModule } from './components/dynamicforms/dynamic-form.module';
 import { LoginComponent } from './components/authentication/login.component'
 import { AuthenticationGuard } from './components/authentication/authentication-guard'
-
+import { MdTabsModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 export const sharedConfig: NgModule = {
@@ -24,12 +26,14 @@ export const sharedConfig: NgModule = {
         EncounterComponent,
         EncounterDetailComponent,
         HeaderComponent,  
-        LoginComponent,
+        LoginComponent, 
                 
     ],
     imports: [
         ReactiveFormsModule,
-        DynamicFormModule,
+        DynamicFormModule, MdTabsModule,
+        BrowserModule,
+        BrowserAnimationsModule,
         
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },

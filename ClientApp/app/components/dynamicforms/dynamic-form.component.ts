@@ -28,7 +28,7 @@ export class DynamicFormComponent implements OnInit {
 
     @Output()
     submitted: EventEmitter<any> = new EventEmitter<any>();
-    
+
     form: FormGroup;
 
     constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
@@ -36,12 +36,12 @@ export class DynamicFormComponent implements OnInit {
         //    this.config = ctrols;
         //    this.form = this.createGroup();
         //});
-        
+        console.log("ctor: " + this.config);
     }
 
     ngOnInit() {
         try {
-            console.log(this.config);
+            console.log("ngInIt: "+this.config);
             this.form = this.createGroup();
         }
         catch (err) {
@@ -64,16 +64,18 @@ export class DynamicFormComponent implements OnInit {
             'Small Text Box': 'text',
             'Label': 'text',
             'widget': 'widget',
-             '': 'text'
+            '': 'widgettest'
         };
-         this.config.forEach(i =>
-                {
-                    i.field_type = controlTypeMapping[i.field_type];
+        this.config.forEach(i => {
+            if (i.widget_type == null)
+                i.field_type = controlTypeMapping[i.field_type];
+            else
+                i.field_type = 'widgettest';
                 })
-        
+
         const group = this.fb.group({});
-        this.config.forEach(control =>
-        {
+        this.config.forEach(control => {
+
             switch (control.field_type) {
 
                 case 'multiselectlistbox': {
@@ -81,8 +83,14 @@ export class DynamicFormComponent implements OnInit {
                     group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))
                     break;
                 }
-                case 'widget': {
-                    var widgetctrl = this.fb.group(control.mr_form_field_data);
+                case 'widgettest': {
+                    //var widgetctrl = this.fb.group(control.mr_form_field_data);
+                    var widgetctrl = this.fb.group({
+                        name: 'prajeen',
+                        url: 'wwww.test.com',
+                        description: 'Desc',
+                        sex: ''
+                    });
                     group.addControl(control.mr_form_field_id.toString(), widgetctrl);
                     break;
                 }
@@ -94,11 +102,9 @@ export class DynamicFormComponent implements OnInit {
                         group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))
                     }
                     break;
-                } 
-               
+                }
+
             }
-           
-                
         });
         return group;
     }
