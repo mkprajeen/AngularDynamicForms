@@ -9,6 +9,7 @@ import { EncounterComponent } from './components/encounter/encounter.component';
 import { EncounterDetailComponent } from './components/encounter/encounterdetail.component';
 
 import { HeaderComponent } from './components/shared/header/header.component'
+import { NavMenuComponent } from './components/shared/navmenu/navmenu.component';
 import { DynamicFormModule } from './components/dynamicforms/dynamic-form.module';
 import { LoginComponent } from './components/authentication/login.component'
 import { AuthenticationGuard } from './components/authentication/authentication-guard'
@@ -25,7 +26,8 @@ export const sharedConfig: NgModule = {
         MainFormComponent,
         EncounterComponent,
         EncounterDetailComponent,
-        HeaderComponent,  
+        HeaderComponent, 
+        NavMenuComponent,
         LoginComponent, 
                 
     ],
