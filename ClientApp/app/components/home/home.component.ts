@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit  {
        //this.config = this._templateBldrSrv.getfromLocal();
     }
     ngOnInit() {
-        this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT + 'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=56')
+        this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT + 'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=45')
        // this.templateBldrSrv.get(Global.BASE_TEMPLATE_ENDPOINT + 'templatebuilder/GetSectionsForEncounter?patientEncounterId=3258') 
             .subscribe(enSections =>
             {

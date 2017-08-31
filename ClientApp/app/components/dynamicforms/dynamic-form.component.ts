@@ -62,25 +62,26 @@ export class DynamicFormComponent implements OnInit {
             'DatePicker': 'date',
             'time': 'time',
             'Small Text Box': 'text',
+            'Smart Text Box': 'textarea',
             'Label': 'text',
             'widget': 'widget',
             '': 'widgettest'
         };
         this.config.forEach(i => {
-            if (i.widget_type == null)
-                i.field_type = controlTypeMapping[i.field_type];
+            if (i.widgetType == null)
+                i.fieldType = controlTypeMapping[i.fieldType];
             else
-                i.field_type = 'widgettest';
+                i.fieldType = 'widgettest';
                 })
 
         const group = this.fb.group({});
         this.config.forEach(control => {
 
-            switch (control.field_type) {
+            switch (control.fieldType) {
 
                 case 'multiselectlistbox': {
                     //control.mr_form_field_data- comma separated value to be converted to a array
-                    group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))
+                    group.addControl(control.mrFormFieldId.toString(), this.fb.control(control.mrFormFieldData))
                     break;
                 }
                 case 'widgettest': {
@@ -91,15 +92,15 @@ export class DynamicFormComponent implements OnInit {
                         description: 'Desc',
                         sex: ''
                     });
-                    group.addControl(control.mr_form_field_id.toString(), widgetctrl);
+                    group.addControl(control.mrFormFieldId.toString(), widgetctrl);
                     break;
                 }
                 default: {
-                    if (control.required_indicator) {
-                        group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data, [Validators.required, Validators.minLength(control.minlenth)]))
+                    if (control.requiredIndicator) {
+                        group.addControl(control.mrFormFieldId.toString(), this.fb.control(control.mrFormFieldData, [Validators.required, Validators.minLength(control.minlenth)]))
                     }
                     else {
-                        group.addControl(control.mr_form_field_id.toString(), this.fb.control(control.mr_form_field_data))
+                        group.addControl(control.mrFormFieldId.toString(), this.fb.control(control.mrFormFieldData))
                     }
                     break;
                 }

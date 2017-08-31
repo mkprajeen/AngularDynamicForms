@@ -1,8 +1,8 @@
 ﻿<div [formGroup]="group">
-    <div class="container" [formGroupName]="config.mr_form_field_id">
+    <div class="container" [formGroupName]="config.mrFormFieldId">
         <h1>Widget</h1>
         {{group.value | json }}
-        <!--{{group.controls[config.mr_form_field_id].value}}-->
+        <!--{{group.controls[config.mrFormFieldId].value}}-->
 
         <!--<form novalidate [formGroup]="group" >-->
         <div class="form-group">
@@ -10,10 +10,10 @@
                 <span>Name</span>
             </label>
             <input type="text" formControlName="name" class="form-control" placeholder="Referer Name">
-            <!--<div [hidden]="group.controls[config.mr_form_field_id].value.valid || group.controls[config.mr_form_field_id].value.pristine" class="alert alert-danger">
-                <span *ngIf="!group.controls[config.mr_form_field_id].value.valid">Name is required!</span>
+            <!--<div [hidden]="group.controls[config.mrFormFieldId].value.valid || group.controls[config.mrFormFieldId].value.pristine" class="alert alert-danger">
+                <span *ngIf="!group.controls[config.mrFormFieldId].value.valid">Name is required!</span>
             </div>-->
-            <!--<div *ngIf="!(group.controls[config.mr_form_field_id].value.valid || group.controls[config.mr_form_field_id].value.pristine) as variable" class="alert alert-danger">
+            <!--<div *ngIf="!(group.controls[config.mrFormFieldId].value.valid || group.controls[config.mrFormFieldId].value.pristine) as variable" class="alert alert-danger">
                 <span>Name is required!</span>
             </div>--> 
         </div>

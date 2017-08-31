@@ -9,10 +9,10 @@ import { FormGroup } from '@angular/forms';
       class="dynamic-field form-select"
       [formGroup]="group">
       <label>{{ config.label }}</label>     
-        <p *ngFor="let option of config.mr_form_field_value_option">
-         <input type="radio" [formControlName]="config.mr_form_field_id"  [value] = "option.value_option"
+        <p *ngFor="let option of config.mrFormFieldValueOptions">
+         <input type="radio" [formControlName]="config.mrFormFieldId"  [value] = "option.valueOption"
             
-             />  {{ option.value_option }}<br> 
+             />  {{ option.valueOption }}<br> 
        </p>
     </div>`
 })
@@ -23,7 +23,7 @@ export class FormRadioButtonGroupComponent implements OnInit {
 
     ngOnInit() {
         //this.chkgrpvalue = (this.config.mr_form_field_data as string).toString().split(',');
-        //this.group.controls[this.config.mr_form_field_id].setValue(this.chkgrpvalue.join(','));
+        //this.group.controls[this.config.mrFormFieldId].setValue(this.chkgrpvalue.join(','));
     }
 
     setCheckedValue(option: string, val: string): boolean {
@@ -42,6 +42,6 @@ export class FormRadioButtonGroupComponent implements OnInit {
                     this.chkgrpvalue.splice(index, 1);
             }
         }
-        this.group.controls[this.config.mr_form_field_id].setValue(this.chkgrpvalue.join(','));
+        this.group.controls[this.config.mrFormFieldId].setValue(this.chkgrpvalue.join(','));
     }
 }

@@ -12,8 +12,8 @@
     </md-tab-group>-->
 
     <md-tab-group>
-        <md-tab *ngFor="let section of encounterSections" [label]="section.section_heading">
-            <dynamic-form *ngIf="section.section_heading" [config]="section.mr_form_field">loading...</dynamic-form>
+        <md-tab *ngFor="let section of encounterSections" [label]="section.sectionHeading">
+            <dynamic-form *ngIf="section.sectionHeading" [config]="section.mrFormFields">loading...</dynamic-form>
         </md-tab>
     </md-tab-group>
 

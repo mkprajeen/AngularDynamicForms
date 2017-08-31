@@ -10,11 +10,11 @@ import { FormGroup } from '@angular/forms';
       [formGroup]="group">
       <label>{{ config.label }}</label>
       <input
-        id="{{config.mr_form_field_id}}"
+        id="{{config.mrFormFieldId}}"
         type="text"
-        [attr.placeholder]="config.display_label"
-        [formControlName]="config.mr_form_field_id" />
-        <div *ngIf="!(group.controls[config.mr_form_field_id].valid || group.controls[config.mr_form_field_id].pristine) as variable" class="alert alert-danger" >
+        [attr.placeholder]="config.displayLabel"
+        [formControlName]="config.mrFormFieldId" />
+        <div *ngIf="!(group.controls[config.mrFormFieldId].valid || group.controls[config.mrFormFieldId].pristine) as variable" class="alert alert-danger" >
             <span>{{config.validationmsg}}</span>
         </div>       
     </div>`

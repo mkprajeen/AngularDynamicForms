@@ -1,13 +1,13 @@
 ﻿export class mr_form_field {
     constructor() {
         //this.mr_form_field_data =[];
-        this.mr_form_field_value_option = [];
+        this.mrFormFieldValueOptions = [];
 
     }
-    public mr_form_field_id: number;
+    public mrFormFieldId: number;
     public mr_template_section_id?: number;
     public data_type?: string;
-    public value_options?: string[];
+    public valueOptions?: string[];
     public field_type: string;
     public widget_type?: string;
     public row_order?: number;
@@ -31,21 +31,21 @@
     public label_font_size?: number;
     public label_font_weight?: string;
     public isactive?: boolean;
-    public display_label?: string;
+    public displayLabel?: string;
 
     public validationmsg?: string;
     public minlenth?: number;
     public mr_form_field_data?: any;
 
     //public mr_form_field_data: ICollection<mr_form_field_data>;
-    public mr_form_field_value_option?: mr_form_field_value_option[];
+    public mrFormFieldValueOptions?: mrFormFieldValueOptions[];
     //public mr_template_section: mr_template_section;
 }
 
-export class mr_form_field_value_option {
+export class mrFormFieldValueOptions {
     public mr_form_field_value_id: number;
-    public mr_form_field_id: number;
-    public value_option: string;
+    public mrFormFieldId: number;
+    public valueOption: string;
     public order_index: number;
     public is_active: boolean;
 

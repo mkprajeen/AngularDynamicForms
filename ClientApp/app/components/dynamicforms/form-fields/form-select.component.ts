@@ -9,10 +9,10 @@ import { FormGroup } from '@angular/forms';
       class="dynamic-field form-select"
       [formGroup]="group">
       <label>{{ config.label }}</label>
-      <select [formControlName]="config.mr_form_field_id">
-        <option value="option.value">{{ config.display_label }}</option>
-        <option *ngFor="let option of config.mr_form_field_value_option">
-          {{ option.value_option }}
+      <select [formControlName]="config.mrFormFieldId">
+        <option value="option.value">{{ config.displayLabel }}</option>
+        <option *ngFor="let option of config.mrFormFieldValueOptions">
+          {{ option.valueOption }}
         </option>
       </select>
     </div>

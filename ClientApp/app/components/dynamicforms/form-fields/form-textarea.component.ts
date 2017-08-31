@@ -9,10 +9,10 @@ import { FormGroup } from '@angular/forms';
       class="dynamic-field form-input" 
       [formGroup]="group">
       <label>{{ config.label }}</label>
-      <textarea  id="{{config.mr_form_field_id}}"
-        [attr.placeholder]="config.display_label"
-        [formControlName]="config.mr_form_field_id"></textarea>
-        <div *ngIf="!(group.controls[config.mr_form_field_id].valid || group.controls[config.mr_form_field_id].pristine) as variable" class="alert alert-danger" >
+      <textarea  id="{{config.mrFormFieldId}}"
+        [attr.placeholder]="config.displayLabel"
+        [formControlName]="config.mrFormFieldId"></textarea>
+        <div *ngIf="!(group.controls[config.mrFormFieldId].valid || group.controls[config.mrFormFieldId].pristine) as variable" class="alert alert-danger" >
             <span>{{config.validationmsg}}</span>
         </div>       
     </div>`

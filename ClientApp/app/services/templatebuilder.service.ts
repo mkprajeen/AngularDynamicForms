@@ -134,7 +134,8 @@ export class TemplatebuilderService {
        let headers = new Headers({ 'Authorization': 'Bearer ' + token });
        let options = new RequestOptions({ headers: headers });
        return this._http.get(url, options)
-           .map((response: Response) => <any>response.json())
+           .map((response: Response) => <Array <any>>response.json())
+
            //.map((response: Response) => this.data)
            .catch(this.handleError);
    }
