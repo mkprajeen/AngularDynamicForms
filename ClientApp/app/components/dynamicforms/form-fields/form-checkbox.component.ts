@@ -8,12 +8,12 @@ import { FormGroup } from '@angular/forms';
     <div 
       class="dynamic-field form-input" 
       [formGroup]="group">
-      <label>{{ config.label }}</label>
+      <label>{{ config.Label }}</label>
       <input
-        id="{{config.mrFormFieldId}}"
+        id="{{config.MrFormFieldId}}"
         type="checkbox"
-        [formControlName]="config.mrFormFieldId" />
-        <div *ngIf="!(group.controls[config.mrFormFieldId].valid || group.controls[config.mrFormFieldId].pristine) as variable" class="alert alert-danger" >
+        [formControlName]="config.MrFormFieldId" />
+        <div *ngIf="!(group.controls[config.MrFormFieldId].valid || group.controls[config.MrFormFieldId].pristine) as variable" class="alert alert-danger" >
             <span>{{config.validationmsg}}</span>
         </div>       
     </div>`

@@ -68,39 +68,39 @@ export class DynamicFormComponent implements OnInit {
             '': 'widgettest'
         };
         this.config.forEach(i => {
-            if (i.widgetType == null)
-                i.fieldType = controlTypeMapping[i.fieldType];
+            if (i.WidgetType == null)
+                i.FieldType = controlTypeMapping[i.FieldType];
             else
-                i.fieldType = 'widgettest';
+                i.FieldType = 'widgettest';
                 })
 
         const group = this.fb.group({});
         this.config.forEach(control => {
 
-            switch (control.fieldType) {
+            switch (control.FieldType) {
 
                 case 'multiselectlistbox': {
-                    //control.mr_form_field_data- comma separated value to be converted to a array
-                    group.addControl(control.mrFormFieldId.toString(), this.fb.control(control.mrFormFieldData))
+                    //control.MrFormFieldData- comma separated value to be converted to a array
+                    group.addControl(control.MrFormFieldId.toString(), this.fb.control(control.MrFormFieldData))
                     break;
                 }
                 case 'widgettest': {
-                    //var widgetctrl = this.fb.group(control.mr_form_field_data);
+                    //var widgetctrl = this.fb.group(control.MrFormFieldData);
                     var widgetctrl = this.fb.group({
                         name: 'prajeen',
                         url: 'wwww.test.com',
                         description: 'Desc',
                         sex: ''
                     });
-                    group.addControl(control.mrFormFieldId.toString(), widgetctrl);
+                    group.addControl(control.MrFormFieldId.toString(), widgetctrl);
                     break;
                 }
                 default: {
-                    if (control.requiredIndicator) {
-                        group.addControl(control.mrFormFieldId.toString(), this.fb.control(control.mrFormFieldData, [Validators.required, Validators.minLength(control.minlenth)]))
+                    if (control.RequiredIndicator) {
+                        group.addControl(control.MrFormFieldId.toString(), this.fb.control(control.MrFormFieldData, [Validators.required, Validators.minLength(control.minlenth)]))
                     }
                     else {
-                        group.addControl(control.mrFormFieldId.toString(), this.fb.control(control.mrFormFieldData))
+                        group.addControl(control.MrFormFieldId.toString(), this.fb.control(control.MrFormFieldData))
                     }
                     break;
                 }

@@ -21,7 +21,7 @@ export class WidgetTestComponent {
         //    url: 'wwww.test.com',
         //    description: 'Desc'
         //};
-        //this.config.mr_form_field_data = {
+        //this.config.MrFormFieldData = {
         //    name: 'prajeen',
         //    url: 'wwww.test.com',
         //    description: 'Desc'

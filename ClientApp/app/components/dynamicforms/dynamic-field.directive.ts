@@ -47,7 +47,7 @@ export class DynamicFieldDirective implements OnInit {
 
     component;
     ngOnInit() {
-        const component = components[this.config.fieldType];
+        const component = components[this.config.FieldType];
         const factory = this.resolver.resolveComponentFactory<any>(component);
         this.component = this.container.createComponent(factory);
         this.component.instance.config = this.config;

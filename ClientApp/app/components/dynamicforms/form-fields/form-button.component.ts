@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
       class="dynamic-field form-button"
       [formGroup]="group">
       <button type="submit">
-        {{ config.label }}
+        {{ config.Label }}
       </button>
     </div>
   `

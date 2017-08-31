@@ -8,11 +8,11 @@ import { FormGroup } from '@angular/forms';
     <div 
       class="dynamic-field form-input" 
       [formGroup]="group">
-      <label>{{ config.label }}</label>
-      <textarea  id="{{config.mrFormFieldId}}"
-        [attr.placeholder]="config.displayLabel"
-        [formControlName]="config.mrFormFieldId"></textarea>
-        <div *ngIf="!(group.controls[config.mrFormFieldId].valid || group.controls[config.mrFormFieldId].pristine) as variable" class="alert alert-danger" >
+      <label>{{ config.Label }}</label>
+      <textarea  id="{{config.MrFormFieldId}}"
+        [attr.placeholder]="config.DisplayLabel"
+        [formControlName]="config.MrFormFieldId"></textarea>
+        <div *ngIf="!(group.controls[config.MrFormFieldId].valid || group.controls[config.MrFormFieldId].pristine) as variable" class="alert alert-danger" >
             <span>{{config.validationmsg}}</span>
         </div>       
     </div>`
