@@ -6,14 +6,14 @@
     }
     public mrFormFieldId: number;
     public mr_template_section_id?: number;
-    public data_type?: string;
+    public dataType?: string;
     public valueOptions?: string[];
-    public field_type: string;
+    public fieldType: string;
     public widget_type?: string;
     public row_order?: number;
     public column_order?: number;
     public default_value?: string;
-    public required_indicator?: boolean;
+    public requiredIndicator?: boolean;
     public date_created?: Date;
     public created_by_user_id?: number;
     public date_last_updated?: Date;
