@@ -36,6 +36,17 @@ export class HomeComponent implements OnInit  {
                 this.msg = <any>error;
                 console.log(this.msg);
             });
+
+        this.templateBldrSrv.getUser(Global.BASE_TEMPLATE_ENDPOINT + 'templatebuilder/GetUserById?userId=12')      
+            .subscribe(user =>
+            {            
+                this.uiNotServ.UserDetail.next(user);
+            },
+            error =>
+            {
+                this.msg = <any>error;
+                console.log(this.msg);
+            });
         
 
     }

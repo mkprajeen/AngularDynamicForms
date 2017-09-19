@@ -149,4 +149,15 @@ export class TemplatebuilderService {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }
+
+    getUser(url: string): Observable<any> {
+        if (typeof window !== 'undefined')
+            var token = localStorage.getItem('token');
+        let headers = new Headers({ 'Authorization': 'Bearer ' + token });
+        let options = new RequestOptions({ headers: headers });
+        return this._http.get(url, options)
+            .map((response: Response) => <any>response.json())
+
+            .catch(this.handleError);
+    }
 }
