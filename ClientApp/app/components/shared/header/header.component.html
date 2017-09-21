@@ -6,10 +6,12 @@
                    <image href="" src="svg.png" width="20" height="20"/>
                </svg>
            </a>
+         
        </div>
        <p class=" navbar-text">Infinity Inc</p>
        <div class="navbar-text navbar-right" >
            <label *ngIf="loggin"  >Welcome: {{logedInUser}}</label>
+           <img [src]="userPhoto" style="border-radius:50%;height:30px;width:30px">
            <a (click)="onLogout()" *ngIf="loggin" >logout</a>
        </div>
    </div>
