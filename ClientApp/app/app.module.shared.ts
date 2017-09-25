@@ -16,6 +16,7 @@ import { AuthenticationGuard } from './components/authentication/authentication-
 import { MdTabsModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@progress/kendo-angular-layout';
 
 
 export const sharedConfig: NgModule = {
@@ -33,7 +34,7 @@ export const sharedConfig: NgModule = {
     ],
     imports: [
         ReactiveFormsModule,
-        DynamicFormModule, MdTabsModule,
+        DynamicFormModule, MdTabsModule, LayoutModule,
         BrowserModule,
         BrowserAnimationsModule,
         

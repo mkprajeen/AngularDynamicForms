@@ -19,6 +19,7 @@
     "@angular/router": "^4.4.3",
     "@progress/kendo-angular-l10n": "^1.0.2",
     "@progress/kendo-angular-layout": "^1.0.5",
+    "@progress/kendo-theme-default": "^1.33.0",
     "@types/node": "7.0.18",
     "angular2-template-loader": "0.6.2",
     "aspnet-prerendering": "^2.0.5",
@@ -45,7 +46,7 @@
     "typescript": "2.3.2",
     "url-loader": "0.5.8",
     "webpack": "^3.6.0",
-    "webpack-hot-middleware":"^2.19.1",
+    "webpack-hot-middleware": "^2.19.1",
     "webpack-merge": "^4.1.0",
     "zone.js": "0.8.10"
   },
