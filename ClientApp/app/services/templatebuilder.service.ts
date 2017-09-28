@@ -1,5 +1,7 @@
 ﻿import { Injectable } from '@angular/core'
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
+import { HttpClient, HttpHeaders} from '@angular/common/http'
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -123,17 +125,17 @@ export class TemplatebuilderService {
     }
 
     ];
-   constructor(private _http: Http) {
+   constructor(private _http: HttpClient) {
    }
     
    get(url: string): Observable<any> {
        if (typeof window !== 'undefined') 
              var token= localStorage.getItem('token');
-       //let headers = new Headers([{ 'Content-Type': 'application/json' },
-       //    { 'Authorization': 'Bearer ' + token }]);
-       let headers = new Headers({ 'Authorization': 'Bearer ' + token });
-       let options = new RequestOptions({ headers: headers });
-       return this._http.get(url, options)
+       //let headers = new Headers({ 'Authorization': 'Bearer ' + token });
+       //let options = new RequestOptions({ headers: headers });
+       const headers = new HttpHeaders()
+           .set('Authorization', 'Bearer ' + token);
+       return this._http.get(url, { headers })
            .map((response: Response) => <Array <any>>response.json())
 
            //.map((response: Response) => this.data)
@@ -153,9 +155,11 @@ export class TemplatebuilderService {
     getUser(url: string): Observable<any> {
         if (typeof window !== 'undefined')
             var token = localStorage.getItem('token');
-        let headers = new Headers({ 'Authorization': 'Bearer ' + token });
-        let options = new RequestOptions({ headers: headers });
-        return this._http.get(url, options)
+        //let headers = new Headers({ 'Authorization': 'Bearer ' + token });
+        //let options = new RequestOptions({ headers: headers });
+        const headers = new HttpHeaders()
+            .set('Authorization', 'Bearer ' + token);
+        return this._http.get(url, { headers })
             .map((response: Response) => <any>response.json())
 
             .catch(this.handleError);

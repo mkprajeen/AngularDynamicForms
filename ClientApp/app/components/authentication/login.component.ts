@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { UINotificationService } from '../../shared/uinotification.service'
 import { AuthenticationService } from '../../services/authentication.service'
+import { AuthenticationStore } from './authentication.store'
 import { Global } from '../../shared/global'
 
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     constructor(private fb: FormBuilder,
         private router: Router,
         private authServ: AuthenticationService,
-        private uiNotServ: UINotificationService  ) {
+        private uiNotServ: UINotificationService,
+        private authStore: AuthenticationStore) {
 
     }
     ngOnInit() {
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
 
         this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: value.username, password: value.password })
             .subscribe(token => {
+                this.authStore.setToken(token.access_token);
                 localStorage.setItem('token', token.access_token);
                 //TODO: get user details and user profile info
                 if (value.username == 'dev') {

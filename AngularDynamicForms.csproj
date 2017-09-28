@@ -19,6 +19,10 @@
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
     <Content Remove="ClientApp\**" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\authentication\authentication.interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\authentication\authentication.store.ts" />
+  </ItemGroup>
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec Command="npm install" />
