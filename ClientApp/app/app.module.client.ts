@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { sharedConfig } from './app.module.shared';
 import { TemplatebuilderService } from './services/templatebuilder.service'
@@ -17,7 +16,6 @@ import { AuthenticationStore } from './components/authentication/authentication.
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule,
         HttpClientModule,
         ...sharedConfig.imports
     ],

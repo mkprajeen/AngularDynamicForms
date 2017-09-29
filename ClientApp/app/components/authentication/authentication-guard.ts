@@ -6,19 +6,19 @@ import { UINotificationService } from '../../shared/uinotification.service'
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
-    currentUser: string;
+    LoggedIn: boolean;
     constructor(private router: Router,
         private uiNotiServ: UINotificationService ) {
-        this.uiNotiServ.loginUser.subscribe(user => {
-            this.currentUser = user;
+        this.uiNotiServ.LoggedIn.subscribe(lgdIn => {
+            this.LoggedIn = lgdIn;
         });
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        //if (this.currentUser != null) {
-        if ((typeof window !== 'undefined') && localStorage.getItem('currentUser')!=null){
-            // logged in so return true
-            return true;
+        if (this.LoggedIn) {
+        //if ((typeof window !== 'undefined') && localStorage.getItem('LoggedIn')!=null){
+        //    // logged in so return true
+           return this.LoggedIn;
         }
 
         // not logged in so redirect to login page with the return url

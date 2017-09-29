@@ -13,13 +13,14 @@ export class HeaderComponent {
     userPhoto: string;
     photo: string;
     constructor(private router: Router, private uiNotiServ: UINotificationService) {
-        this.uiNotiServ.loginUser.subscribe(currentUser => {
-            this.loggin = true;
-            this.logedInUser = currentUser;
+        this.uiNotiServ.LoggedIn.subscribe(logdIn => {
+            this.loggin = logdIn;
+         
         });
 
         this.uiNotiServ.UserDetail.subscribe(cUser => {
-            this.userPhoto = "data:image/JPEG;base64,"+ cUser.PhotoImage;
+            this.userPhoto = "data:image/JPEG;base64," + cUser.PhotoImage;
+            this.logedInUser = cUser.FirstName + cUser.MiddleName + cUser.LastName;
         });
 
     }

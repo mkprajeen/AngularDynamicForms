@@ -6,7 +6,7 @@ export class UINotificationService {
 
     dynamicControls: Subject<any[]> = new Subject<any[]>();
     dynamicSections: Subject<any[]> = new Subject<any[]>();
-    loginUser: Subject<string> = new Subject<string>();
+    LoggedIn: Subject<boolean> = new Subject<boolean>();
     UserDetail: Subject<any> = new Subject<any>();
     constructor() {
     }

@@ -11,6 +11,7 @@ export class AuthenticationStore {
     protected token$ = new BehaviorSubject<string>(this.token);
 
     setToken(token: string): any {
+        this.token = token;
         this.token$.next(token);
     }
     getToken(): Observable<string> {

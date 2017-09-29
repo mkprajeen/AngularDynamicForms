@@ -32,13 +32,21 @@ export class LoginComponent implements OnInit {
     onSubmit({ value, valid }: { value: Login, valid: boolean }) {
 
         this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: value.username, password: value.password })
-            .subscribe(token => {
-                this.authStore.setToken(token.access_token);
-                localStorage.setItem('token', token.access_token);
-                //TODO: get user details and user profile info
-                if (value.username == 'dev') {
-                    localStorage.setItem('currentUser', 'Prajeen Kumar MK');
-                    this.uiNotServ.loginUser.next('Prajeen Kumar MK');
+            .subscribe(token => {                
+                if (token.access_token != null) {
+                    this.authStore.setToken(token.access_token);
+                    this.uiNotServ.LoggedIn.next(true);
+
+                    //TODO: get user details and user profile info
+                    this.authServ.getUser(Global.BASE_TEMPLATE_ENDPOINT + 'user/GetUserById?userId=12')
+                        .subscribe(user => {
+                            this.uiNotServ.UserDetail.next(user);
+                        },
+                        error => {
+                            this.errorMessage = <any>error;
+                            console.log(this.errorMessage);
+                        });
+                   
                     this.router.navigate(['/home']);
                 }
             },
