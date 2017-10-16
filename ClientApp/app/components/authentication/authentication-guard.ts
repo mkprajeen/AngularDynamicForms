@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { UINotificationService } from '../../shared/uinotification.service'
+import { AuthenticationStore } from './authentication.store'
 
 
 
@@ -8,17 +9,18 @@ import { UINotificationService } from '../../shared/uinotification.service'
 export class AuthenticationGuard implements CanActivate {
     LoggedIn: boolean;
     constructor(private router: Router,
-        private uiNotiServ: UINotificationService ) {
-        this.uiNotiServ.LoggedIn.subscribe(lgdIn => {
-            this.LoggedIn = lgdIn;
-        });
+        private uiNotiServ: UINotificationService, private authStor: AuthenticationStore ) {
+        //this.uiNotiServ.LoggedIn.subscribe(lgdIn => {
+        //    this.LoggedIn = lgdIn;
+        //});
+        this.LoggedIn = authStor.LoggedIn;
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.LoggedIn) {
-        //if ((typeof window !== 'undefined') && localStorage.getItem('LoggedIn')!=null){
-        //    // logged in so return true
-           return this.LoggedIn;
+        console.log("AuthenticationGuard:" + this.LoggedIn);
+        if (this.authStor.LoggedIn) {
+
+           return true;
         }
 
         // not logged in so redirect to login page with the return url

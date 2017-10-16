@@ -21,11 +21,11 @@ import { AuthenticationStore} from './components/authentication/authentication.s
     ],
     providers: [
         
-        TemplatebuilderService, AuthenticationGuard, AuthenticationService, UINotificationService, AuthenticationStore,
-        [{
-            provide: HTTP_INTERCEPTORS, useClass:
-            AuthenticationInterceptor, multi: true
-        }]
+        //TemplatebuilderService, AuthenticationGuard, AuthenticationService, UINotificationService, AuthenticationStore,
+        //[{
+        //    provide: HTTP_INTERCEPTORS, useClass:
+        //    AuthenticationInterceptor, multi: true
+        //}]
     ]
 })
 export class AppModule {

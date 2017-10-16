@@ -34,13 +34,16 @@ export class LoginComponent implements OnInit {
         this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: value.username, password: value.password })
             .subscribe(token => {                
                 if (token.access_token != null) {
-                    this.authStore.setToken(token.access_token);
-                    this.uiNotServ.LoggedIn.next(true);
+                   // this.authStore.setToken(token.access_token);
+                    this.authStore.token = token.access_token;
+                    this.authStore.LoggedIn = true;
+                    //this.uiNotServ.LoggedIn.next(true);
 
                     //TODO: get user details and user profile info
-                    this.authServ.getUser(Global.BASE_TEMPLATE_ENDPOINT + 'user/GetUserById?userId=12')
+                    this.authServ.getUser(Global.BASE_TEMPLATE_ENDPOINT + 'users/12')
                         .subscribe(user => {
                             this.uiNotServ.UserDetail.next(user);
+                            this.authStore.UserDetail = user;
                         },
                         error => {
                             this.errorMessage = <any>error;
