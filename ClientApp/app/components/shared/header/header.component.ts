@@ -23,8 +23,10 @@ export class HeaderComponent {
         //this.logedInUser = authStore.UserDetail.FirstName + authStore.UserDetail.MiddleName + authStore.UserDetail.LastName;
 
         this.uiNotiServ.UserDetail.subscribe(cUser => {
-            this.userPhoto = "data:image/JPEG;base64," + cUser.PhotoImage;
+            console.log("User Name:" + cUser.FirstName);
             this.logedInUser = cUser.FirstName + cUser.MiddleName + cUser.LastName;
+            this.userPhoto = "data:image/JPEG;base64," + cUser.PhotoImage;
+           
         });
 
     }
@@ -38,7 +40,9 @@ export class HeaderComponent {
 
     onLogout() {
         //this.loggin = false;
+        this.authStore.LoggedIn = false;
         this.logedInUser = null;
+        this.authStore.token = null;
         
         this.authStore.getToken().subscribe((tok: string) => {
             console.log("onlogout:" + tok);
